@@ -1,35 +1,4 @@
-/* Apply RTL globally to all content - homepage will override */
-html {
-    direction: rtl;
-}
-
-body {
-    direction: rtl;
-    text-align: right;
-}
-
-/* Keep navigation and UI elements LTR */
-.md-header,
-.md-tabs,
-.md-nav,
-.md-sidebar,
-.md-search,
-.md-footer {
-    direction: ltr !important;
-    text-align: left !important;
-}
-
-/* Main content area RTL */
-.md-content {
-    direction: rtl !important;
-}
-
-.md-content__inner {
-    direction: rtl !important;
-    text-align: right !important;
-}
-
-/* Code blocks always LTR */
+/* Keep code blocks and technical content LTR even in RTL pages */
 .md-content pre,
 .md-content code,
 .md-typeset code,
@@ -37,5 +6,4 @@ body {
 .highlighttable {
     direction: ltr !important;
     text-align: left !important;
-    unicode-bidi: embed !important;
 }
