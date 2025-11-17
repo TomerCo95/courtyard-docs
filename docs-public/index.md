@@ -1,3 +1,5 @@
+<div dir="ltr" markdown="1">
+
 # Courtyard AI - Customer Integration Guides
 
 Welcome to the Courtyard AI integration documentation.
@@ -9,3 +11,5 @@ Welcome to the Courtyard AI integration documentation.
 ## Support
 
 Need help? Contact us at support@thecourtyard.ai
+
+</div>
