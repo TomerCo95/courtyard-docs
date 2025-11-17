@@ -1,33 +1,41 @@
-/* RTL support for Hebrew content */
+/* Apply RTL globally to all content - homepage will override */
+html {
+    direction: rtl;
+}
+
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Keep navigation and UI elements LTR */
+.md-header,
+.md-tabs,
+.md-nav,
+.md-sidebar,
+.md-search,
+.md-footer {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Main content area RTL */
+.md-content {
+    direction: rtl !important;
+}
+
 .md-content__inner {
     direction: rtl !important;
     text-align: right !important;
 }
 
-/* Keep navigation and header LTR (English) */
-.md-header,
-.md-tabs,
-.md-nav--primary,
-.md-nav--secondary,
-.md-sidebar {
-    direction: ltr !important;
-    text-align: left !important;
-}
-
-/* Code blocks stay LTR for readability */
+/* Code blocks always LTR */
 .md-content pre,
-.md-content code:not(.language-text),
-.highlight {
+.md-content code,
+.md-typeset code,
+.highlight,
+.highlighttable {
     direction: ltr !important;
     text-align: left !important;
-}
-
-/* Tables in RTL */
-.md-content table {
-    direction: rtl !important;
-}
-
-.md-content table th,
-.md-content table td {
-    text-align: right !important;
+    unicode-bidi: embed !important;
 }
