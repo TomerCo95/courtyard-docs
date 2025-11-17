@@ -9,6 +9,8 @@ site_dir: site-public
 
 theme:
   name: material
+  language: he
+  direction: rtl
   palette:
     # Light mode
     - scheme: default
