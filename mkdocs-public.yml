@@ -1,0 +1,60 @@
+# MkDocs Configuration for Public/Customer Docs
+site_name: Courtyard AI - Integration Guides
+site_url: https://docs.thecourtyard.ai
+site_description: Customer integration guides for Courtyard AI platform
+
+# Docs directory
+docs_dir: docs-public
+site_dir: site-public
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+# Navigation structure - PUBLIC ONLY
+nav:
+  - Home: index.md
+  - SSO Configuration: MS_AUTH_CONFIGURATION.md
+
+extra:
+  social:
+    - icon: fontawesome/solid/envelope
+      link: mailto:support@thecourtyard.ai
