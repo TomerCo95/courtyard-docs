@@ -1,0 +1,2769 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Internal technical docs for Courtyard AI platform">
+      
+      
+      
+        <link rel="canonical" href="https://docs-internal.thecourtyard.ai/SETUP_NEW_ENVIRONMENT_GUIDE/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Environment Setup Guide - Courtyard AI Internal Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#complete-guide-setting-up-a-new-terraform-environment-tomer-env-3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Courtyard AI Internal Docs" class="md-header__button md-logo" aria-label="Courtyard AI Internal Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Courtyard AI Internal Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Environment Setup Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/courtyard-ai/courtyard-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    courtyard-ai/courtyard-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Environment Setup Guide
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Courtyard AI Internal Docs" class="md-nav__button md-logo" aria-label="Courtyard AI Internal Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Courtyard AI Internal Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/courtyard-ai/courtyard-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    courtyard-ai/courtyard-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Setup Guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environment Setup Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-gcp-project-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: GCP Project Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1: GCP Project Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-11-create-gcp-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.1: Create GCP Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-get-project-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.2: Get Project Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-13-enable-required-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.3: Enable Required APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-14-set-billing-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.4: Set Billing Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-oauth-authentication-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: OAuth &amp; Authentication Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 2: OAuth &amp; Authentication Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-21-create-iap-identity-aware-proxy-branding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.1: Create IAP (Identity-Aware Proxy) Branding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-22-create-iap-oauth-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.2: Create IAP OAuth Client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-23-create-microsoft-oauth-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.3: Create Microsoft OAuth App
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-24-create-firebase-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.4: Create Firebase Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-service-accounts-iam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Service Accounts &amp; IAM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 3: Service Accounts &amp; IAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-31-create-terraform-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.1: Create Terraform Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-32-create-terraform-service-account-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.2: Create Terraform Service Account Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-33-grant-user-iap-permissions-optional-but-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.3: Grant User IAP Permissions (Optional but Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-github-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: GitHub Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 4: GitHub Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-41-create-github-workload-identity-federation-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.1: Create GitHub Workload Identity Federation Pool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-42-create-github-deployer-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.2: Create GitHub Deployer Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-43-grant-github-oidc-access-to-deploy-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.3: Grant GitHub OIDC Access to Deploy Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-44-get-github-wif-details-for-later-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.4: Get GitHub WIF Details (For Later Use)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-terraform-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5: Terraform Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 5: Terraform Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-51-prepare-environment-variables-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.1: Prepare Environment Variables (Secrets)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-52-create-tfvars-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.2: Create tfvars File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-53-update-tfvars-with-actual-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.3: Update tfvars with Actual Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-54-create-terraform-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.4: Create Terraform Workspace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-55-initialize-terraform-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.5: Initialize Terraform Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-6-apply-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6: Apply Terraform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 6: Apply Terraform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-61-plan-terraform-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6.1: Plan Terraform Changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-62-apply-terraform-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6.2: Apply Terraform Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-63-verify-terraform-succeeded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6.3: Verify Terraform Succeeded
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-7-post-deployment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 7: Post-Deployment Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 7: Post-Deployment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-71-dns-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.1: DNS Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-72-update-artifact-registry-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.2: Update Artifact Registry Repositories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-73-create-github-actions-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.3: Create GitHub Actions Secrets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-74-createupdate-github-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.4: Create/Update GitHub Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-75-test-load-balancer-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.5: Test Load Balancer Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-76-verify-database-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.6: Verify Database Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-77-monitor-terraform-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.7: Monitor Terraform Outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-terraform-init-fails-with-backend-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: terraform init fails with backend error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-apis-not-enabled-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: APIs not enabled error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-vpc-peering-fails-during-terraform-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: VPC Peering fails during terraform apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-cloud-run-services-in-error-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Cloud Run services in Error state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-load-balancer-returns-403-forbidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Load balancer returns 403 Forbidden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-database-connection-times-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Database connection times out
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-secret-manager-values-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Secret Manager values not found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-dns-not-resolving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: DNS not resolving
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps-after-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps After Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success Criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-gcp-project-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: GCP Project Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1: GCP Project Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-11-create-gcp-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.1: Create GCP Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-12-get-project-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.2: Get Project Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-13-enable-required-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.3: Enable Required APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-14-set-billing-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1.4: Set Billing Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-oauth-authentication-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: OAuth &amp; Authentication Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 2: OAuth &amp; Authentication Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-21-create-iap-identity-aware-proxy-branding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.1: Create IAP (Identity-Aware Proxy) Branding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-22-create-iap-oauth-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.2: Create IAP OAuth Client
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-23-create-microsoft-oauth-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.3: Create Microsoft OAuth App
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-24-create-firebase-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2.4: Create Firebase Project
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-service-accounts-iam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Service Accounts &amp; IAM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 3: Service Accounts &amp; IAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-31-create-terraform-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.1: Create Terraform Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-32-create-terraform-service-account-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.2: Create Terraform Service Account Key
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-33-grant-user-iap-permissions-optional-but-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3.3: Grant User IAP Permissions (Optional but Recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-github-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: GitHub Integration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 4: GitHub Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-41-create-github-workload-identity-federation-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.1: Create GitHub Workload Identity Federation Pool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-42-create-github-deployer-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.2: Create GitHub Deployer Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-43-grant-github-oidc-access-to-deploy-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.3: Grant GitHub OIDC Access to Deploy Service Account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-44-get-github-wif-details-for-later-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4.4: Get GitHub WIF Details (For Later Use)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-terraform-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5: Terraform Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 5: Terraform Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-51-prepare-environment-variables-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.1: Prepare Environment Variables (Secrets)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-52-create-tfvars-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.2: Create tfvars File
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-53-update-tfvars-with-actual-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.3: Update tfvars with Actual Values
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-54-create-terraform-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.4: Create Terraform Workspace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-55-initialize-terraform-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5.5: Initialize Terraform Backend
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-6-apply-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6: Apply Terraform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 6: Apply Terraform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-61-plan-terraform-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6.1: Plan Terraform Changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-62-apply-terraform-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6.2: Apply Terraform Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-63-verify-terraform-succeeded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6.3: Verify Terraform Succeeded
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-7-post-deployment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 7: Post-Deployment Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 7: Post-Deployment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-71-dns-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.1: DNS Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-72-update-artifact-registry-repositories" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.2: Update Artifact Registry Repositories
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-73-create-github-actions-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.3: Create GitHub Actions Secrets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-74-createupdate-github-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.4: Create/Update GitHub Workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-75-test-load-balancer-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.5: Test Load Balancer Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-76-verify-database-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.6: Verify Database Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-77-monitor-terraform-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7.7: Monitor Terraform Outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-terraform-init-fails-with-backend-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: terraform init fails with backend error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-apis-not-enabled-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: APIs not enabled error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-vpc-peering-fails-during-terraform-apply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: VPC Peering fails during terraform apply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-cloud-run-services-in-error-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Cloud Run services in Error state
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-load-balancer-returns-403-forbidden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Load balancer returns 403 Forbidden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-database-connection-times-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Database connection times out
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-secret-manager-values-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: Secret Manager values not found
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-dns-not-resolving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue: DNS not resolving
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps-after-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps After Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Success Criteria
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="complete-guide-setting-up-a-new-terraform-environment-tomer-env-3">Complete Guide: Setting Up a New Terraform Environment (tomer-env-3)</h1>
+<p><strong>Purpose:</strong> Step-by-step instructions for creating a completely isolated new environment from scratch</p>
+<p><strong>Estimated Time:</strong> 3-4 hours (mostly GCP console clicks + waiting for provisioning)</p>
+<p><strong>Assumptions:</strong> You're setting up <code>tomer-env-3</code> with no existing environment to copy from</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#phase-1-gcp-project-setup">Phase 1: GCP Project Setup</a></li>
+<li><a href="#phase-2-oauth--authentication-setup">Phase 2: OAuth &amp; Authentication Setup</a></li>
+<li><a href="#phase-3-service-accounts--iam">Phase 3: Service Accounts &amp; IAM</a></li>
+<li><a href="#phase-4-github-integration">Phase 4: GitHub Integration</a></li>
+<li><a href="#phase-5-terraform-configuration">Phase 5: Terraform Configuration</a></li>
+<li><a href="#phase-6-apply-terraform">Phase 6: Apply Terraform</a></li>
+<li><a href="#phase-7-post-deployment-setup">Phase 7: Post-Deployment Setup</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<p><strong>Tools Required:</strong>
+- <code>gcloud</code> CLI installed and authenticated
+  <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>login
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<span class="w"> </span>login
+</code></pre></div>
+- Terraform &gt;= 1.3.0 (check: <code>terraform version</code>)
+- Git (for cloning repos)
+- Text editor (VS Code, nano, vim)
+- Access to:
+  - Google Cloud Console
+  - Microsoft Azure AD (for OAuth)
+  - Firebase Console
+  - GitHub organization
+  - GoDaddy or DNS provider</p>
+<p><strong>Before You Start:</strong>
+- Have the project name ready: <code>tomer-env-3</code>
+- Gather all API keys and secrets (OpenAI, Gemini, HuggingFace, Firebase)
+- Have Microsoft OAuth credentials ready
+- Know the domain you'll use: <code>tomer-env-3.thecourtyard.ai</code>
+- Get project owner email: your organization's service account owner</p>
+<hr />
+<h2 id="phase-1-gcp-project-setup">Phase 1: GCP Project Setup</h2>
+<h3 id="step-11-create-gcp-project">Step 1.1: Create GCP Project</h3>
+<p><strong>In Google Cloud Console:</strong></p>
+<ol>
+<li>Go to https://console.cloud.google.com</li>
+<li>Click <strong>Select a Project</strong> (top left dropdown)</li>
+<li>Click <strong>NEW PROJECT</strong></li>
+<li>Fill in:</li>
+<li><strong>Project Name:</strong> <code>tomer-env-3</code></li>
+<li><strong>Organization:</strong> Select your organization (if applicable)</li>
+<li>Click <strong>CREATE</strong></li>
+</ol>
+<p><strong>Wait 1-2 minutes for project creation...</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Verify project was created (CLI)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>gcloud<span class="w"> </span>projects<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>tomer-env-3
+</code></pre></div>
+<h3 id="step-12-get-project-number">Step 1.2: Get Project Number</h3>
+<p>You'll need this for several configurations.</p>
+<p><strong>In Cloud Console:</strong>
+1. Navigate to <strong>Select a Project</strong> → <code>tomer-env-3</code>
+2. Go to <strong>Project Settings</strong> (gear icon, top right)
+3. Copy the <strong>Project Number</strong> (looks like: <code>123456789012</code>)</p>
+<p><strong>Or via CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>gcloud<span class="w"> </span>projects<span class="w"> </span>describe<span class="w"> </span>tomer-env-3<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;value(projectNumber)&#39;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># Output: 123456789012</span>
+</code></pre></div></p>
+<p><strong>Save this value</strong> - you'll need it soon for <code>tomer-env-3.tfvars</code></p>
+<h3 id="step-13-enable-required-apis">Step 1.3: Enable Required APIs</h3>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>APIs &amp; Services</strong> → <strong>Library</strong></li>
+<li>Search for and <strong>ENABLE</strong> each API:</li>
+<li>✅ Compute Engine API</li>
+<li>✅ Cloud Run API</li>
+<li>✅ Cloud SQL Admin API</li>
+<li>✅ Service Networking API</li>
+<li>✅ VPC Access API</li>
+<li>✅ Secret Manager API</li>
+<li>✅ Identity-Aware Proxy API</li>
+<li>✅ Cloud DNS API</li>
+<li>✅ Network Services API</li>
+<li>✅ Firebase Management API</li>
+<li>✅ Firebase Authentication API</li>
+<li>✅ Cloud Logging API</li>
+<li>✅ IAM API</li>
+<li>✅ Artifact Registry API</li>
+<li>✅ Cloud Build API (for Artifact Registry image building)</li>
+</ol>
+<p><strong>Or via CLI (faster):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>gcloud<span class="w"> </span>services<span class="w"> </span><span class="nb">enable</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>compute.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>run.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>sqladmin.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>servicenetworking.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>vpcaccess.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>secretmanager.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>iap.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span>dns.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>networkservices.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span>identitytoolkit.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>firebase.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span>logging.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span>iam.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span>artifactregistry.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span>cloudbuild.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div></p>
+<p><strong>Wait for all APIs to enable (2-3 minutes)</strong></p>
+<h3 id="step-14-set-billing-account">Step 1.4: Set Billing Account</h3>
+<p><strong>In Cloud Console:</strong>
+1. Go to <strong>Billing</strong>
+2. Link the project to a billing account (required to create resources)
+3. Select your organization's billing account</p>
+<p><strong>If you don't have billing access, contact your GCP administrator</strong></p>
+<hr />
+<h2 id="phase-2-oauth-authentication-setup">Phase 2: OAuth &amp; Authentication Setup</h2>
+<h3 id="step-21-create-iap-identity-aware-proxy-branding">Step 2.1: Create IAP (Identity-Aware Proxy) Branding</h3>
+<p><strong>Important:</strong> This must be done ONCE per GCP project.</p>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>Security</strong> → <strong>Identity-Aware Proxy</strong></li>
+<li>On the <strong>OAuth Consent Screen</strong> tab:</li>
+<li>Click <strong>EDIT APP</strong></li>
+<li>
+<p>Fill in:</p>
+<ul>
+<li><strong>App name:</strong> <code>Thecourtyard AI - tomer-env-3</code></li>
+<li><strong>User support email:</strong> Your email (e.g., <code>tomer@thecourtyard.ai</code>)</li>
+<li><strong>Developer contact info:</strong> Your email</li>
+<li>Click <strong>SAVE AND CONTINUE</strong></li>
+</ul>
+</li>
+<li>
+<p>On <strong>Scopes</strong> tab:</p>
+</li>
+<li>Click <strong>ADD OR REMOVE SCOPES</strong></li>
+<li>Add: <code>openid</code>, <code>email</code>, <code>profile</code></li>
+<li>Click <strong>UPDATE</strong></li>
+<li>
+<p>Click <strong>SAVE AND CONTINUE</strong></p>
+</li>
+<li>
+<p>On <strong>Test Users</strong> tab:</p>
+</li>
+<li>Add yourself as test user</li>
+<li>Click <strong>SAVE AND CONTINUE</strong></li>
+</ol>
+<p><strong>Or via CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Get the brand (after created in console)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>gcloud<span class="w"> </span>iap<span class="w"> </span>oauth-brands<span class="w"> </span>list<span class="w"> </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div></p>
+<h3 id="step-22-create-iap-oauth-client">Step 2.2: Create IAP OAuth Client</h3>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>Security</strong> → <strong>Identity-Aware Proxy</strong></li>
+<li>Go to <strong>Applications</strong> tab (top menu)</li>
+<li>Click <strong>CREATE OAUTH CLIENT</strong></li>
+<li>Choose type: <strong>Web application</strong></li>
+<li>Fill in:</li>
+<li><strong>Name:</strong> <code>Terraform IAP Client</code></li>
+<li><strong>Authorized JavaScript origins:</strong><ul>
+<li><code>https://tomer-env-3.thecourtyard.ai</code></li>
+</ul>
+</li>
+<li><strong>Authorized redirect URIs:</strong><ul>
+<li><code>https://tomer-env-3.thecourtyard.ai/</code></li>
+<li><code>https://tomer-env-3.thecourtyard.ai/_gcp_gatekeeper/authenticate_oauth</code></li>
+</ul>
+</li>
+<li>
+<p>Click <strong>CREATE</strong></p>
+</li>
+<li>
+<p><strong>IMPORTANT:</strong> Copy and save:</p>
+</li>
+<li><strong>Client ID</strong></li>
+<li><strong>Client Secret</strong></li>
+</ol>
+<p><strong>You'll need these values in <code>tomer-env-3.tfvars</code></strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Verify via CLI</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>gcloud<span class="w"> </span>iap<span class="w"> </span>oauth-clients<span class="w"> </span>list<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--filter<span class="o">=</span><span class="s2">&quot;displayName:Terraform&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--format<span class="o">=</span><span class="s2">&quot;value(name,clientId)&quot;</span>
+</code></pre></div>
+<h3 id="step-23-create-microsoft-oauth-app">Step 2.3: Create Microsoft OAuth App</h3>
+<p><strong>In Azure Portal:</strong></p>
+<ol>
+<li>Go to https://portal.azure.com</li>
+<li>Navigate to <strong>Azure Active Directory</strong> → <strong>App registrations</strong></li>
+<li>Click <strong>+ New registration</strong></li>
+<li>Fill in:</li>
+<li><strong>Name:</strong> <code>Thecourtyard AI - tomer-env-3</code></li>
+<li><strong>Supported account types:</strong> Select "Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)"</li>
+<li>
+<p>Click <strong>REGISTER</strong></p>
+</li>
+<li>
+<p>On the new app page:</p>
+</li>
+<li><strong>Copy Application (client) ID</strong> - save this</li>
+<li>Go to <strong>Authentication</strong> → <strong>+ Add a platform</strong></li>
+<li>Choose <strong>Web</strong></li>
+<li>Fill in <strong>Redirect URIs:</strong><ul>
+<li><code>https://tomer-env-3.thecourtyard.ai</code></li>
+<li><code>http://localhost:5174</code></li>
+<li><code>https://127.0.0.1:5174</code></li>
+<li><code>https://&lt;FIREBASE_PROJECT&gt;.firebaseapp.com/__/auth/handler</code></li>
+<li><code>https://&lt;FIREBASE_PROJECT&gt;.firebaseapp.com</code></li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Configure</strong></p>
+</li>
+<li>
+<p>Go to <strong>Certificates &amp; secrets</strong> → <strong>Client secrets</strong></p>
+</li>
+<li>Click <strong>+ New client secret</strong></li>
+<li><strong>Description:</strong> <code>Terraform</code></li>
+<li><strong>Expires:</strong> Select <code>24 months</code></li>
+<li>Click <strong>Add</strong></li>
+<li>
+<p><strong>IMPORTANT:</strong> Copy the secret VALUE immediately (you won't see it again)</p>
+</li>
+<li>
+<p>Go to <strong>API permissions</strong></p>
+</li>
+<li>Click <strong>+ Add a permission</strong></li>
+<li>Choose <strong>Microsoft Graph</strong></li>
+<li>Select <strong>Delegated permissions</strong></li>
+<li>Search for and select:<ul>
+<li><code>email</code></li>
+<li><code>profile</code></li>
+<li><code>User.Read</code></li>
+<li><code>openid</code></li>
+</ul>
+</li>
+<li>
+<p>Click <strong>Add permissions</strong></p>
+</li>
+<li>
+<p>Go to <strong>Token configuration</strong></p>
+</li>
+<li>Click <strong>+ Add optional claim</strong></li>
+<li>Choose <strong>ID</strong> token type</li>
+<li>Add claims:<ul>
+<li>✅ <code>auth_time</code></li>
+<li>✅ <code>email</code></li>
+<li>✅ <code>family_name</code></li>
+<li>✅ <code>given_name</code></li>
+<li>✅ <code>groups</code></li>
+<li>✅ <code>preferred_username</code></li>
+<li>✅ <code>upn</code></li>
+</ul>
+</li>
+<li>Click <strong>Add</strong></li>
+</ol>
+<p><strong>Save the following values:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>MICROSOFT_CLIENT_ID = &lt;Application (client) ID&gt;
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>MICROSOFT_CLIENT_SECRET = &lt;Secret value&gt;
+</code></pre></div></p>
+<h3 id="step-24-create-firebase-project">Step 2.4: Create Firebase Project</h3>
+<p><strong>In Firebase Console:</strong></p>
+<ol>
+<li>Go to https://console.firebase.google.com</li>
+<li>Click <strong>+ Create project</strong></li>
+<li><strong>Project name:</strong> <code>tomer-env-3</code></li>
+<li><strong>Enable Google Analytics:</strong> (optional, uncheck if not needed)</li>
+<li>Click <strong>CREATE PROJECT</strong></li>
+</ol>
+<p><strong>Wait for Firebase to initialize (2-3 minutes)</strong></p>
+<ol>
+<li>Once created, go to <strong>Project settings</strong> (gear icon)</li>
+<li>Go to <strong>Service accounts</strong> tab</li>
+<li>Click <strong>Generate new private key</strong></li>
+<li>This downloads a JSON file: <code>tomer-env-3-firebase-adminsdk-*.json</code></li>
+</ol>
+<p><strong>Convert Firebase key to base64:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># On macOS/Linux:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>base64<span class="w"> </span>-i<span class="w"> </span>tomer-env-3-firebase-adminsdk-*.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>firebase-key-base64.txt
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># On Windows PowerShell:</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">[</span>Convert<span class="o">]</span>::ToBase64String<span class="o">([</span>System.IO.File<span class="o">]</span>::ReadAllBytes<span class="o">(</span><span class="s2">&quot;tomer-env-3-firebase-adminsdk-*.json&quot;</span><span class="o">))</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Set-Content<span class="w"> </span>firebase-key-base64.txt
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># On Windows (Git Bash):</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>openssl<span class="w"> </span>base64<span class="w"> </span>-in<span class="w"> </span>tomer-env-3-firebase-adminsdk-*.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>firebase-key-base64.txt
+</code></pre></div></p>
+<p><strong>Save the base64 output</strong> - you'll need it for <code>tomer-env-3.tfvars</code></p>
+<p><strong>Also go to Firebase Authentication:</strong>
+1. <strong>Authentication</strong> → <strong>Sign-in method</strong>
+2. Enable providers:
+   - ✅ Google
+   - ✅ Microsoft</p>
+<hr />
+<h2 id="phase-3-service-accounts-iam">Phase 3: Service Accounts &amp; IAM</h2>
+<h3 id="step-31-create-terraform-service-account">Step 3.1: Create Terraform Service Account</h3>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>IAM &amp; Admin</strong> → <strong>Service Accounts</strong></li>
+<li>Click <strong>+ CREATE SERVICE ACCOUNT</strong></li>
+<li>Fill in:</li>
+<li><strong>Service account name:</strong> <code>terraform-sa</code></li>
+<li><strong>Service account ID:</strong> <code>terraform-sa</code> (auto-filled)</li>
+<li><strong>Description:</strong> <code>Terraform service account for infrastructure deployment</code></li>
+<li>
+<p>Click <strong>CREATE AND CONTINUE</strong></p>
+</li>
+<li>
+<p><strong>Grant roles</strong> (in "Grant this service account access to project"):</p>
+</li>
+<li>Click <strong>+ GRANT ROLES</strong></li>
+<li>Add each role:<ul>
+<li>✅ <code>Editor</code> (roles/editor)</li>
+<li>✅ <code>Service Account Admin</code> (roles/iam.serviceAccountAdmin)</li>
+<li>✅ <code>Service Account User</code> (roles/iam.serviceAccountUser)</li>
+<li>✅ <code>Service Usage Admin</code> (roles/serviceusage.serviceUsageAdmin)</li>
+</ul>
+</li>
+<li>Click <strong>CONTINUE</strong></li>
+<li>Click <strong>DONE</strong></li>
+</ol>
+<p><strong>Or via CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Create service account</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>gcloud<span class="w"> </span>iam<span class="w"> </span>service-accounts<span class="w"> </span>create<span class="w"> </span>terraform-sa<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--description<span class="o">=</span><span class="s2">&quot;Terraform service account for infrastructure deployment&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--display-name<span class="o">=</span><span class="s2">&quot;Terraform SA&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Grant roles</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>gcloud<span class="w"> </span>projects<span class="w"> </span>add-iam-policy-binding<span class="w"> </span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span>--member<span class="o">=</span><span class="s2">&quot;serviceAccount:terraform-sa@tomer-env-3.iam.gserviceaccount.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span>--role<span class="o">=</span><span class="s2">&quot;roles/editor&quot;</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>gcloud<span class="w"> </span>projects<span class="w"> </span>add-iam-policy-binding<span class="w"> </span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">  </span>--member<span class="o">=</span><span class="s2">&quot;serviceAccount:terraform-sa@tomer-env-3.iam.gserviceaccount.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">  </span>--role<span class="o">=</span><span class="s2">&quot;roles/iam.serviceAccountAdmin&quot;</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>gcloud<span class="w"> </span>projects<span class="w"> </span>add-iam-policy-binding<span class="w"> </span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span>--member<span class="o">=</span><span class="s2">&quot;serviceAccount:terraform-sa@tomer-env-3.iam.gserviceaccount.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">  </span>--role<span class="o">=</span><span class="s2">&quot;roles/iam.serviceAccountUser&quot;</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>gcloud<span class="w"> </span>projects<span class="w"> </span>add-iam-policy-binding<span class="w"> </span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">  </span>--member<span class="o">=</span><span class="s2">&quot;serviceAccount:terraform-sa@tomer-env-3.iam.gserviceaccount.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">  </span>--role<span class="o">=</span><span class="s2">&quot;roles/serviceusage.serviceUsageAdmin&quot;</span>
+</code></pre></div></p>
+<h3 id="step-32-create-terraform-service-account-key">Step 3.2: Create Terraform Service Account Key</h3>
+<p>This is the key you'll use for local Terraform execution.</p>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>IAM &amp; Admin</strong> → <strong>Service Accounts</strong></li>
+<li>Click on <code>terraform-sa@tomer-env-3.iam.gserviceaccount.com</code></li>
+<li>Go to <strong>Keys</strong> tab</li>
+<li>Click <strong>+ CREATE KEY</strong></li>
+<li>Choose <strong>JSON</strong></li>
+<li>Click <strong>CREATE</strong></li>
+</ol>
+<p><strong>This downloads <code>tomer-env-3-terraform-key.json</code></strong></p>
+<p><strong>Use this key to authenticate locally:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Set up gcloud to use this key</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>activate-service-account<span class="w"> </span>--key-file<span class="o">=</span>tomer-env-3-terraform-key.json
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Verify it works</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>list
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>gcloud<span class="w"> </span>projects<span class="w"> </span>list
+</code></pre></div></p>
+<h3 id="step-33-grant-user-iap-permissions-optional-but-recommended">Step 3.3: Grant User IAP Permissions (Optional but Recommended)</h3>
+<p>This allows you to impersonate the terraform SA to test/debug.</p>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>IAM &amp; Admin</strong> → <strong>IAM</strong></li>
+<li>Click <strong>+ GRANT ACCESS</strong></li>
+<li><strong>New principal:</strong> Your email (e.g., <code>tomer@thecourtyard.ai</code>)</li>
+<li><strong>Roles:</strong> Select <code>Service Account Token Creator</code> (roles/iam.serviceAccountTokenCreator)</li>
+<li>Click <strong>SAVE</strong></li>
+</ol>
+<p><strong>Or via CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>gcloud<span class="w"> </span>iam<span class="w"> </span>service-accounts<span class="w"> </span>add-iam-policy-binding<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span>terraform-sa@tomer-env-3.iam.gserviceaccount.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span>--member<span class="o">=</span><span class="s2">&quot;user:tomer@thecourtyard.ai&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span>--role<span class="o">=</span><span class="s2">&quot;roles/iam.serviceAccountTokenCreator&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div></p>
+<hr />
+<h2 id="phase-4-github-integration">Phase 4: GitHub Integration</h2>
+<h3 id="step-41-create-github-workload-identity-federation-pool">Step 4.1: Create GitHub Workload Identity Federation Pool</h3>
+<p>This allows GitHub Actions to authenticate to GCP WITHOUT storing service account keys.</p>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>IAM &amp; Admin</strong> → <strong>Workload Identity Federation</strong></li>
+<li>Click <strong>+ CREATE WORKLOAD IDENTITY POOL</strong></li>
+<li>Fill in:</li>
+<li><strong>Pool ID:</strong> <code>github-pool</code></li>
+<li><strong>Pool display name:</strong> <code>GitHub Workload Identity Pool</code></li>
+<li><strong>Location:</strong> Select <code>Global</code></li>
+<li>
+<p>Click <strong>CONTINUE</strong></p>
+</li>
+<li>
+<p><strong>Configure provider:</strong></p>
+</li>
+<li><strong>Provider ID:</strong> <code>github-provider</code></li>
+<li><strong>Provider display name:</strong> <code>GitHub OIDC Provider</code></li>
+<li><strong>OpenID Connect (OIDC) provider URL:</strong> <code>https://token.actions.githubusercontent.com</code></li>
+<li>
+<p>Click <strong>CONTINUE</strong></p>
+</li>
+<li>
+<p><strong>Map Google Cloud attributes:</strong></p>
+</li>
+<li>Click <strong>ADD MAPPING</strong></li>
+<li><strong>Google Cloud attribute:</strong> <code>google.subject</code></li>
+<li><strong>OIDC attribute:</strong> <code>assertion.sub</code></li>
+<li>Click <strong>ADD MAPPING</strong> again</li>
+<li><strong>Google Cloud attribute:</strong> <code>attribute.repository</code></li>
+<li><strong>OIDC attribute:</strong> <code>assertion.repository</code></li>
+<li>
+<p>Click <strong>SAVE</strong></p>
+</li>
+<li>
+<p><strong>Configure attribute conditions (optional but recommended):</strong></p>
+</li>
+<li>Add: <code>assertion.repository.startsWith('courtyard-ai/')</code></li>
+<li>This restricts access to repos in your org</li>
+<li>Click <strong>SAVE</strong></li>
+</ol>
+<p><strong>Or via CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Create pool</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>gcloud<span class="w"> </span>iam<span class="w"> </span>workload-identity-pools<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;github-pool&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>--location<span class="o">=</span><span class="s2">&quot;global&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>--display-name<span class="o">=</span><span class="s2">&quot;GitHub Workload Identity Pool&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Create provider</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>gcloud<span class="w"> </span>iam<span class="w"> </span>workload-identity-pools<span class="w"> </span>providers<span class="w"> </span>create-oidc<span class="w"> </span><span class="s2">&quot;github-provider&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span>--location<span class="o">=</span><span class="s2">&quot;global&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">  </span>--workload-identity-pool<span class="o">=</span><span class="s2">&quot;github-pool&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">  </span>--display-name<span class="o">=</span><span class="s2">&quot;GitHub OIDC Provider&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">  </span>--issuer-uri<span class="o">=</span><span class="s2">&quot;https://token.actions.githubusercontent.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">  </span>--attribute-mapping<span class="o">=</span><span class="s2">&quot;google.subject=assertion.sub,attribute.repository=assertion.repository&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">  </span>--attribute-condition<span class="o">=</span><span class="s2">&quot;assertion.repository.startsWith(&#39;courtyard-ai/&#39;)&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div></p>
+<h3 id="step-42-create-github-deployer-service-account">Step 4.2: Create GitHub Deployer Service Account</h3>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>IAM &amp; Admin</strong> → <strong>Service Accounts</strong></li>
+<li>Click <strong>+ CREATE SERVICE ACCOUNT</strong></li>
+<li>Fill in:</li>
+<li><strong>Service account name:</strong> <code>github-deployer</code></li>
+<li><strong>Service account ID:</strong> <code>github-deployer</code> (auto-filled)</li>
+<li><strong>Description:</strong> <code>Used by GitHub Actions to deploy to GCP</code></li>
+<li>
+<p>Click <strong>CREATE AND CONTINUE</strong></p>
+</li>
+<li>
+<p><strong>Grant roles:</strong></p>
+</li>
+<li>Click <strong>+ GRANT ROLES</strong></li>
+<li>Add roles:<ul>
+<li>✅ <code>Cloud Run Admin</code> (roles/run.admin)</li>
+<li>✅ <code>Storage Admin</code> (roles/storage.admin)</li>
+<li>✅ <code>Artifact Registry Reader</code> (roles/artifactregistry.reader)</li>
+<li>✅ <code>Artifact Registry Writer</code> (roles/artifactregistry.writer)</li>
+<li>✅ <code>Service Account User</code> (roles/iam.serviceAccountUser)</li>
+</ul>
+</li>
+<li>Click <strong>CONTINUE</strong></li>
+<li>Click <strong>DONE</strong></li>
+</ol>
+<p><strong>Or via CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Create service account</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>gcloud<span class="w"> </span>iam<span class="w"> </span>service-accounts<span class="w"> </span>create<span class="w"> </span>github-deployer<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>--description<span class="o">=</span><span class="s2">&quot;Used by GitHub Actions to deploy to GCP&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>--display-name<span class="o">=</span><span class="s2">&quot;GitHub Deployer&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Grant roles</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="k">for</span><span class="w"> </span>role<span class="w"> </span><span class="k">in</span><span class="w"> </span>roles/run.admin<span class="w"> </span>roles/storage.admin<span class="w"> </span>roles/artifactregistry.reader<span class="w"> </span>roles/artifactregistry.writer<span class="w"> </span>roles/iam.serviceAccountUser<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">  </span>gcloud<span class="w"> </span>projects<span class="w"> </span>add-iam-policy-binding<span class="w"> </span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span>--member<span class="o">=</span><span class="s2">&quot;serviceAccount:github-deployer@tomer-env-3.iam.gserviceaccount.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span>--role<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$role</span><span class="s2">&quot;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="k">done</span>
+</code></pre></div></p>
+<h3 id="step-43-grant-github-oidc-access-to-deploy-service-account">Step 4.3: Grant GitHub OIDC Access to Deploy Service Account</h3>
+<p>This binds the GitHub OIDC provider to the deployer SA so GHA can authenticate.</p>
+<p><strong>In Cloud Console:</strong></p>
+<ol>
+<li>Go to <strong>IAM &amp; Admin</strong> → <strong>Service Accounts</strong></li>
+<li>Click <code>github-deployer@tomer-env-3.iam.gserviceaccount.com</code></li>
+<li>Go to <strong>Permissions</strong> tab</li>
+<li>Click <strong>+ GRANT ACCESS</strong></li>
+<li>
+<p><strong>New principal:</strong> (for EACH repo that will deploy)
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>principalSet://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/attribute.repository/courtyard-ai/lawgic-ai-backend
+</code></pre></div>
+   Replace <code>PROJECT_NUMBER</code> with your project number, and <code>lawgic-ai-backend</code> with your repo name</p>
+</li>
+<li>
+<p><strong>Role:</strong> <code>Workload Identity User</code> (roles/iam.workloadIdentityUser)</p>
+</li>
+<li>Click <strong>SAVE</strong></li>
+</ol>
+<p><strong>Repeat for each GitHub repo that will deploy:</strong>
+- <code>courtyard-ai/lawgic-ai-backend</code>
+- <code>courtyard-ai/lawgic-ai-engine</code>
+- <code>courtyard-ai/lawgic-ai-dashboard</code></p>
+<p><strong>Or via CLI:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">PROJECT_NUMBER</span><span class="o">=</span><span class="k">$(</span>gcloud<span class="w"> </span>projects<span class="w"> </span>describe<span class="w"> </span>tomer-env-3<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;value(projectNumber)&#39;</span><span class="k">)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1"># For each repo:</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>gcloud<span class="w"> </span>iam<span class="w"> </span>service-accounts<span class="w"> </span>add-iam-policy-binding<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span>github-deployer@tomer-env-3.iam.gserviceaccount.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">  </span>--role<span class="o">=</span><span class="s2">&quot;roles/iam.workloadIdentityUser&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">  </span>--member<span class="o">=</span><span class="s2">&quot;principalSet://iam.googleapis.com/projects/</span><span class="nv">$PROJECT_NUMBER</span><span class="s2">/locations/global/workloadIdentityPools/github-pool/attribute.repository/courtyard-ai/lawgic-ai-backend&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="c1"># Repeat for engine and dashboard repos...</span>
+</code></pre></div></p>
+<h3 id="step-44-get-github-wif-details-for-later-use">Step 4.4: Get GitHub WIF Details (For Later Use)</h3>
+<p>You'll need these values for GitHub Actions workflow files.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">PROJECT_NUMBER</span><span class="o">=</span><span class="k">$(</span>gcloud<span class="w"> </span>projects<span class="w"> </span>describe<span class="w"> </span>tomer-env-3<span class="w"> </span>--format<span class="o">=</span><span class="s1">&#39;value(projectNumber)&#39;</span><span class="k">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Service Account Email: github-deployer@tomer-env-3.iam.gserviceaccount.com&quot;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Workload Identity Provider: projects/</span><span class="nv">$PROJECT_NUMBER</span><span class="s2">/locations/global/workloadIdentityPools/github-pool/providers/github-provider&quot;</span>
+</code></pre></div>
+<p><strong>Save these values</strong> - you'll need them in GitHub Actions workflows</p>
+<hr />
+<h2 id="phase-5-terraform-configuration">Phase 5: Terraform Configuration</h2>
+<h3 id="step-51-prepare-environment-variables-secrets">Step 5.1: Prepare Environment Variables (Secrets)</h3>
+<p>You'll need these values for <code>tomer-env-3.tfvars</code>. Gather:</p>
+<p><strong>From GCP (already created):</strong>
+- ✅ <code>project_id</code>: <code>tomer-env-3</code>
+- ✅ <code>project_number</code>: (from Step 1.2)
+- ✅ <code>google_iap_client_id</code>: (from Step 2.2)
+- ✅ <code>google_iap_client_secret</code>: (from Step 2.2)</p>
+<p><strong>From Microsoft Azure:</strong>
+- ✅ <code>microsoft_client_id</code>: (from Step 2.3)
+- ✅ <code>microsoft_client_secret</code>: (from Step 2.3)</p>
+<p><strong>From Firebase:</strong>
+- ✅ <code>firebase_service_account_key_base64</code>: (from Step 2.4)</p>
+<p><strong>Generated (create secure passwords):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Generate secure password for database</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">32</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># Output: abc123... (save as DB_PASSWORD)</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># Generate secure password for admin user</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">32</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Output: xyz789... (save as ADMIN_PASSWORD)</span>
+</code></pre></div></p>
+<p><strong>From Third-party APIs (gather these separately):</strong>
+- ✅ <code>openai_api_key</code>: Get from OpenAI dashboard
+- ✅ <code>gemini_api_key</code>: Get from Google Cloud's Vertex AI
+- ✅ <code>huggingface_api_token</code>: Get from HuggingFace account</p>
+<p><strong>Organization/User Info:</strong>
+- ✅ <code>workspace_user_email</code>: Your email (e.g., <code>tomer@thecourtyard.ai</code>)
+- ✅ <code>admin_user_email</code>: Admin email (can be same as yours)
+- ✅ <code>domain</code>: <code>tomer-env-3.thecourtyard.ai</code> (or your domain)</p>
+<h3 id="step-52-create-tfvars-file">Step 5.2: Create tfvars File</h3>
+<p>Navigate to the Terraform directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>c:/Users/tomer/dev2/devops/infra/terraform/gcp
+</code></pre></div>
+<p>Create <code>tomer-env-3.tfvars</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>tomer-env-3.tfvars<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="s"># Project Configuration</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="s">project_id     = &quot;tomer-env-3&quot;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="s">project_number = &quot;123456789012&quot;  # FROM STEP 1.2</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="s">region         = &quot;me-west1&quot;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="s">zone           = &quot;me-west1-a&quot;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="s"># Environment Identification</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="s">environment          = &quot;tomer-env-3&quot;</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="s">workspace_user_email = &quot;tomer@thecourtyard.ai&quot;</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="s"># Database Configuration</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="s">db_user     = &quot;courtyard&quot;</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="s">db_password = &quot;PASTE_DB_PASSWORD_HERE&quot;  # FROM STEP 5.1</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="s">db_name     = &quot;courtyard&quot;</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="s"># Cloud Run Services</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="s">backend_service_name   = &quot;backend-api&quot;</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="s">backend_repository_id  = &quot;development&quot;</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="s">backend_image_id       = &quot;backend&quot;</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="s">engine_service_name    = &quot;engine&quot;</span>
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="s">engine_repository_id   = &quot;development&quot;</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="s">engine_image_id        = &quot;engine&quot;</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a><span class="s">dashboard_service_name = &quot;dashboard&quot;</span>
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a><span class="s">dashboard_repository_id = &quot;development&quot;</span>
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a><span class="s">dashboard_image_id      = &quot;dashboard&quot;</span>
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a><span class="s"># Storage</span>
+<a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a><span class="s">dashboard_bucket_name = &quot;tomer-env-3-dashboard-bucket&quot;</span>
+<a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>
+<a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a><span class="s"># Domain &amp; Support</span>
+<a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a><span class="s">domain        = &quot;tomer-env-3.thecourtyard.ai&quot;</span>
+<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a><span class="s">support_email = &quot;tomer@thecourtyard.ai&quot;</span>
+<a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a>
+<a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a><span class="s"># OAuth &amp; Authentication</span>
+<a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a><span class="s">microsoft_client_id     = &quot;PASTE_MICROSOFT_CLIENT_ID_HERE&quot;          # FROM STEP 2.3</span>
+<a id="__codelineno-18-39" name="__codelineno-18-39" href="#__codelineno-18-39"></a><span class="s">microsoft_client_secret = &quot;PASTE_MICROSOFT_CLIENT_SECRET_HERE&quot;      # FROM STEP 2.3</span>
+<a id="__codelineno-18-40" name="__codelineno-18-40" href="#__codelineno-18-40"></a><span class="s">admin_user_email        = &quot;tomer@thecourtyard.ai&quot;</span>
+<a id="__codelineno-18-41" name="__codelineno-18-41" href="#__codelineno-18-41"></a><span class="s">admin_user_password     = &quot;PASTE_ADMIN_PASSWORD_HERE&quot;               # FROM STEP 5.1</span>
+<a id="__codelineno-18-42" name="__codelineno-18-42" href="#__codelineno-18-42"></a>
+<a id="__codelineno-18-43" name="__codelineno-18-43" href="#__codelineno-18-43"></a><span class="s"># AI Services</span>
+<a id="__codelineno-18-44" name="__codelineno-18-44" href="#__codelineno-18-44"></a><span class="s">openai_api_key           = &quot;PASTE_OPENAI_API_KEY_HERE&quot;</span>
+<a id="__codelineno-18-45" name="__codelineno-18-45" href="#__codelineno-18-45"></a><span class="s">gemini_api_key           = &quot;PASTE_GEMINI_API_KEY_HERE&quot;</span>
+<a id="__codelineno-18-46" name="__codelineno-18-46" href="#__codelineno-18-46"></a><span class="s">huggingface_api_token    = &quot;PASTE_HUGGINGFACE_TOKEN_HERE&quot;</span>
+<a id="__codelineno-18-47" name="__codelineno-18-47" href="#__codelineno-18-47"></a><span class="s">firebase_service_account_key_base64 = &quot;PASTE_FIREBASE_KEY_BASE64_HERE&quot;  # FROM STEP 2.4</span>
+<a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a>
+<a id="__codelineno-18-49" name="__codelineno-18-49" href="#__codelineno-18-49"></a><span class="s"># Cloud Location</span>
+<a id="__codelineno-18-50" name="__codelineno-18-50" href="#__codelineno-18-50"></a><span class="s">google_cloud_location = &quot;us-central1&quot;</span>
+<a id="__codelineno-18-51" name="__codelineno-18-51" href="#__codelineno-18-51"></a><span class="s">EOF</span>
+</code></pre></div>
+<h3 id="step-53-update-tfvars-with-actual-values">Step 5.3: Update tfvars with Actual Values</h3>
+<p><strong>Edit the file with your values:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># On Windows:</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>notepad<span class="w"> </span>tomer-env-3.tfvars
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># On macOS/Linux:</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>nano<span class="w"> </span>tomer-env-3.tfvars
+</code></pre></div>
+<p><strong>Replace all <code>PASTE_*</code> placeholders with actual values from Step 5.1</strong></p>
+<p><strong>IMPORTANT - Secure handling:</strong>
+- ❌ DON'T commit tfvars with real secrets to Git
+- ✅ DO store in 1Password, LastPass, or <code>.gitignore</code>
+- ✅ DO use environment variables in CI/CD</p>
+<h3 id="step-54-create-terraform-workspace">Step 5.4: Create Terraform Workspace</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># List existing workspaces</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>terraform<span class="w"> </span>workspace<span class="w"> </span>list
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># Create new workspace</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>terraform<span class="w"> </span>workspace<span class="w"> </span>new<span class="w"> </span>tomer-env-3
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1"># Verify workspace was created</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>terraform<span class="w"> </span>workspace<span class="w"> </span>list
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="c1"># Output:</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="c1">#   default</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="c1"># * tomer-env-3</span>
+</code></pre></div>
+<h3 id="step-55-initialize-terraform-backend">Step 5.5: Initialize Terraform Backend</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Initialize Terraform</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>terraform<span class="w"> </span>init
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># Verify initialization succeeded</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>terraform<span class="w"> </span>validate
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1"># Output: Success! The configuration is valid.</span>
+</code></pre></div>
+<hr />
+<h2 id="phase-6-apply-terraform">Phase 6: Apply Terraform</h2>
+<h3 id="step-61-plan-terraform-changes">Step 6.1: Plan Terraform Changes</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Generate plan</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;tomer-env-3.tfvars&quot;</span><span class="w"> </span>-out<span class="o">=</span>tomer-env-3.tfplan
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># Review output - should show:</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1"># - Network resources (VPC, subnets)</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c1"># - PostgreSQL database</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># - Service accounts</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="c1"># - Cloud Run services (backend, engine, dashboard)</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="c1"># - Load balancers</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># - Secret Manager secrets</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="c1"># - etc.</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="c1"># You should see: Plan: XXX to add, 0 to change, 0 to destroy</span>
+</code></pre></div>
+<p><strong>If there are errors, see Troubleshooting section</strong></p>
+<h3 id="step-62-apply-terraform-configuration">Step 6.2: Apply Terraform Configuration</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Apply the plan</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>terraform<span class="w"> </span>apply<span class="w"> </span>tomer-env-3.tfplan
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Wait for infrastructure to be created (5-10 minutes)</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># Watch the output for any errors</span>
+</code></pre></div>
+<p><strong>What Terraform is Creating:</strong>
+- VPC network with 3 subnets
+- PostgreSQL database instance
+- 3 Cloud Run services (backend, engine, dashboard)
+- 3 Artifact Registry repositories
+- Secret Manager secrets
+- Load balancer with SSL
+- Internal DNS zone
+- Security policies
+- Debug VM (optional)</p>
+<h3 id="step-63-verify-terraform-succeeded">Step 6.3: Verify Terraform Succeeded</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Check Terraform state</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>terraform<span class="w"> </span>state<span class="w"> </span>list
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1"># Should show all created resources</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="c1"># Verify resources in GCP</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>networks<span class="w"> </span>list<span class="w"> </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>gcloud<span class="w"> </span>sql<span class="w"> </span>instances<span class="w"> </span>list<span class="w"> </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>gcloud<span class="w"> </span>run<span class="w"> </span>services<span class="w"> </span>list<span class="w"> </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>instances<span class="w"> </span>list<span class="w"> </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div>
+<hr />
+<h2 id="phase-7-post-deployment-setup">Phase 7: Post-Deployment Setup</h2>
+<h3 id="step-71-dns-configuration">Step 7.1: DNS Configuration</h3>
+<p>You need to create DNS records for your domain to point to the load balancer IP.</p>
+<p><strong>Get the Load Balancer IP:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Find the external IP</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>addresses<span class="w"> </span>list<span class="w"> </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Or from Terraform output (if configured)</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>terraform<span class="w"> </span>output<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;tomer-env-3.tfvars&quot;</span>
+</code></pre></div>
+<p><strong>Look for:</strong> <code>tomer-env-3-lb-ip</code> (should be a global static IP like <code>1.2.3.4</code>)</p>
+<p><strong>In GoDaddy or your DNS provider:</strong></p>
+<ol>
+<li>Go to DNS settings for <code>thecourtyard.ai</code></li>
+<li>Create an A record:</li>
+<li><strong>Host:</strong> <code>tomer-env-3</code></li>
+<li><strong>Points to:</strong> <code>1.2.3.4</code> (the load balancer IP)</li>
+<li><strong>TTL:</strong> <code>3600</code> (1 hour) or auto</li>
+<li>
+<p>Click <strong>Save</strong></p>
+</li>
+<li>
+<p>Verify DNS resolves:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>nslookup<span class="w"> </span>tomer-env-3.thecourtyard.ai
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="c1"># Should return the load balancer IP</span>
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="step-72-update-artifact-registry-repositories">Step 7.2: Update Artifact Registry Repositories</h3>
+<p>The Terraform created 3 empty Artifact Registry repositories. You need to push initial Docker images.</p>
+<p><strong>For each service (backend, engine, dashboard), update their GitHub workflow files:</strong></p>
+<ol>
+<li>Go to the repository (e.g., <code>lawgic-ai-backend</code>)</li>
+<li>Go to <code>.github/workflows/deploy.yml</code></li>
+<li>Update the image location:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to Cloud Run</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google-github-actions/deploy-cloudrun@v0</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">    </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tomer-env-3-backend-api</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">me-west1</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">me-west1-docker.pkg.dev/tomer-env-3/development/backend:latest</span>
+</code></pre></div></li>
+</ol>
+<p><strong>Or push initial placeholder image:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Authenticate Docker with Artifact Registry</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>configure-docker<span class="w"> </span>me-west1-docker.pkg.dev
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># Build and push a placeholder image</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>me-west1-docker.pkg.dev/tomer-env-3/development/backend:latest<span class="w"> </span>.
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>docker<span class="w"> </span>push<span class="w"> </span>me-west1-docker.pkg.dev/tomer-env-3/development/backend:latest
+</code></pre></div></p>
+<h3 id="step-73-create-github-actions-secrets">Step 7.3: Create GitHub Actions Secrets</h3>
+<p>For each repository (<code>lawgic-ai-backend</code>, <code>lawgic-ai-engine</code>, <code>lawgic-ai-dashboard</code>):</p>
+<ol>
+<li>Go to <strong>Settings</strong> → <strong>Secrets and variables</strong> → <strong>Actions</strong></li>
+<li>Create secrets:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>GCP_PROJECT_ID = tomer-env-3
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>GCP_REGION = me-west1
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>GCP_WORKLOAD_IDENTITY_PROVIDER = projects/123456789012/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>GCP_SERVICE_ACCOUNT = github-deployer@tomer-env-3.iam.gserviceaccount.com
+</code></pre></div>
+<p><strong>Get these from Step 4.4</strong></p>
+<h3 id="step-74-createupdate-github-workflows">Step 7.4: Create/Update GitHub Workflows</h3>
+<p>Each repository needs a GitHub Actions workflow file to deploy to the new environment.</p>
+<p><strong>Example <code>.github/workflows/deploy-tomer-env-3.yml</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to tomer-env-3</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="nt">on</span><span class="p">:</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="nv">main</span><span class="w"> </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="nt">permissions</span><span class="p">:</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="w">  </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span>
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<a id="__codelineno-30-16" name="__codelineno-30-16" href="#__codelineno-30-16"></a>
+<a id="__codelineno-30-17" name="__codelineno-30-17" href="#__codelineno-30-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authenticate to Google Cloud</span>
+<a id="__codelineno-30-18" name="__codelineno-30-18" href="#__codelineno-30-18"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google-github-actions/auth@v1</span>
+<a id="__codelineno-30-19" name="__codelineno-30-19" href="#__codelineno-30-19"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-30-20" name="__codelineno-30-20" href="#__codelineno-30-20"></a><span class="w">          </span><span class="nt">workload_identity_provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}</span>
+<a id="__codelineno-30-21" name="__codelineno-30-21" href="#__codelineno-30-21"></a><span class="w">          </span><span class="nt">service_account</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GCP_SERVICE_ACCOUNT }}</span>
+<a id="__codelineno-30-22" name="__codelineno-30-22" href="#__codelineno-30-22"></a>
+<a id="__codelineno-30-23" name="__codelineno-30-23" href="#__codelineno-30-23"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Cloud SDK</span>
+<a id="__codelineno-30-24" name="__codelineno-30-24" href="#__codelineno-30-24"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">google-github-actions/setup-gcloud@v1</span>
+<a id="__codelineno-30-25" name="__codelineno-30-25" href="#__codelineno-30-25"></a>
+<a id="__codelineno-30-26" name="__codelineno-30-26" href="#__codelineno-30-26"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and push Docker image</span>
+<a id="__codelineno-30-27" name="__codelineno-30-27" href="#__codelineno-30-27"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-30-28" name="__codelineno-30-28" href="#__codelineno-30-28"></a><span class="w">          </span><span class="no">gcloud builds submit \</span>
+<a id="__codelineno-30-29" name="__codelineno-30-29" href="#__codelineno-30-29"></a><span class="w">            </span><span class="no">--tag me-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/development/backend:latest \</span>
+<a id="__codelineno-30-30" name="__codelineno-30-30" href="#__codelineno-30-30"></a><span class="w">            </span><span class="no">--project=${{ secrets.GCP_PROJECT_ID }}</span>
+<a id="__codelineno-30-31" name="__codelineno-30-31" href="#__codelineno-30-31"></a>
+<a id="__codelineno-30-32" name="__codelineno-30-32" href="#__codelineno-30-32"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to Cloud Run</span>
+<a id="__codelineno-30-33" name="__codelineno-30-33" href="#__codelineno-30-33"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-30-34" name="__codelineno-30-34" href="#__codelineno-30-34"></a><span class="w">          </span><span class="no">gcloud run deploy tomer-env-3-backend-api \</span>
+<a id="__codelineno-30-35" name="__codelineno-30-35" href="#__codelineno-30-35"></a><span class="w">            </span><span class="no">--image me-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/development/backend:latest \</span>
+<a id="__codelineno-30-36" name="__codelineno-30-36" href="#__codelineno-30-36"></a><span class="w">            </span><span class="no">--region ${{ secrets.GCP_REGION }} \</span>
+<a id="__codelineno-30-37" name="__codelineno-30-37" href="#__codelineno-30-37"></a><span class="w">            </span><span class="no">--project=${{ secrets.GCP_PROJECT_ID }}</span>
+</code></pre></div>
+<h3 id="step-75-test-load-balancer-access">Step 7.5: Test Load Balancer Access</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># Test the external load balancer</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>curl<span class="w"> </span>-I<span class="w"> </span>https://tomer-env-3.thecourtyard.ai/health
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="c1"># Should return: HTTP/2 200 (or 403 if IP is blocked)</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="c1"># Test internal services</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>instances<span class="w"> </span>ssh<span class="w"> </span>tomer-env-3-debug-vm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">  </span>--zone<span class="o">=</span>me-west1-a<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">  </span>--command<span class="o">=</span><span class="s2">&quot;curl http://engine.tomer-env-3.internal:8888/health&quot;</span>
+</code></pre></div>
+<h3 id="step-76-verify-database-connection">Step 7.6: Verify Database Connection</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># SSH into debug VM</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>instances<span class="w"> </span>ssh<span class="w"> </span>tomer-env-3-debug-vm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">  </span>--zone<span class="o">=</span>me-west1-a<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="c1"># From debug VM, test database:</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>postgresql-client
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>psql<span class="w"> </span>-h<span class="w"> </span><span class="m">10</span>.0.0.3<span class="w"> </span>-U<span class="w"> </span>courtyard<span class="w"> </span>-d<span class="w"> </span>courtyard<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT version();&quot;</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a><span class="c1"># Enter password: (from tomer-env-3.tfvars db_password)</span>
+</code></pre></div>
+<h3 id="step-77-monitor-terraform-outputs">Step 7.7: Monitor Terraform Outputs</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># Get IAP OAuth credentials</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>terraform<span class="w"> </span>output<span class="w"> </span>-json
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="c1"># Expected output:</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="c1"># {</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="c1">#   &quot;iap_oauth_client_id&quot;: &quot;123...xyz.apps.googleusercontent.com&quot;,</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="c1">#   &quot;iap_oauth_client_secret&quot;: &quot;GOCSPX-...&quot;</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a><span class="c1"># }</span>
+</code></pre></div>
+<hr />
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="issue-terraform-init-fails-with-backend-error">Issue: <code>terraform init</code> fails with backend error</h3>
+<p><strong>Error:</strong> <code>Error: Backend initialization required</code></p>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># Check credentials</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>list
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="c1"># Output should show: terraform-sa@tomer-env-3.iam.gserviceaccount.com (active)</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="c1"># If not, re-authenticate:</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>activate-service-account<span class="w"> </span>--key-file<span class="o">=</span>tomer-env-3-terraform-key.json
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<span class="w"> </span>login
+</code></pre></div></p>
+<hr />
+<h3 id="issue-apis-not-enabled-error">Issue: APIs not enabled error</h3>
+<p><strong>Error:</strong> <code>Permission denied on service ... API</code></p>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># Re-enable all required APIs</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>gcloud<span class="w"> </span>services<span class="w"> </span><span class="nb">enable</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">  </span>compute.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="w">  </span>run.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="w">  </span>sqladmin.googleapis.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div></p>
+<hr />
+<h3 id="issue-vpc-peering-fails-during-terraform-apply">Issue: VPC Peering fails during <code>terraform apply</code></h3>
+<p><strong>Error:</strong> <code>Error: Error creating Service Networking Connection</code></p>
+<p><strong>Solution:</strong>
+Usually resolves itself after retry:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># Wait 2 minutes, then retry</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;tomer-env-3.tfvars&quot;</span>
+</code></pre></div></p>
+<hr />
+<h3 id="issue-cloud-run-services-in-error-state">Issue: Cloud Run services in <code>Error</code> state</h3>
+<p><strong>Error:</strong> Pod stays in <code>Pending</code> state or Error creating service</p>
+<p><strong>Check logs:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>gcloud<span class="w"> </span>run<span class="w"> </span>services<span class="w"> </span>describe<span class="w"> </span>tomer-env-3-backend-api<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">  </span>--region<span class="o">=</span>me-west1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="w">  </span>--format<span class="o">=</span>yaml
+</code></pre></div></p>
+<p><strong>Common causes:</strong>
+- ❌ Docker image not found (Artifact Registry empty)
+- ❌ VPC connector not ready (wait 5 minutes)
+- ❌ Secrets not accessible (check IAM)</p>
+<hr />
+<h3 id="issue-load-balancer-returns-403-forbidden">Issue: Load balancer returns 403 Forbidden</h3>
+<p><strong>Cause:</strong> IP whitelist security policy is blocking your IP</p>
+<p><strong>Solution:</strong></p>
+<p>Option A: Check your IP and add it to <code>main.tf</code> (lines 437, 464):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># Get your IP</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>curl<span class="w"> </span>ifconfig.me
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="c1"># Output: 1.2.3.4</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="c1"># Add to security policy in main.tf:</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="nv">src_ip_ranges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;1.2.3.4/32&quot;</span>,<span class="w"> </span><span class="s2">&quot;147.236.179.64/32&quot;</span>,<span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="o">]</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a><span class="c1"># Re-apply:</span>
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;tomer-env-3.tfvars&quot;</span>
+</code></pre></div></p>
+<p>Option B: Temporarily disable security policy (testing only):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># Temporarily allow all traffic</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>security-policies<span class="w"> </span>rules<span class="w"> </span>update<span class="w"> </span><span class="m">2147483647</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="w">  </span>--action<span class="w"> </span>allow<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="w">  </span>--security-policy<span class="o">=</span>tomer-env-3-ip-whitelist-policy
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="c1"># Test access</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="c1"># Re-apply security policy:</span>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="o">=</span><span class="s2">&quot;tomer-env-3.tfvars&quot;</span>
+</code></pre></div></p>
+<hr />
+<h3 id="issue-database-connection-times-out">Issue: Database connection times out</h3>
+<p><strong>Error:</strong> <code>timeout waiting for connection from 10.0.0.3:5432</code></p>
+<p><strong>Cause:</strong> VPC Access Connector not yet ready</p>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># Wait 5-10 minutes for connector to initialize, then test again</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="c1"># Check connector status:</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>gcloud<span class="w"> </span>compute<span class="w"> </span>vpc-access<span class="w"> </span>connectors<span class="w"> </span>list<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a><span class="w">  </span>--region<span class="o">=</span>me-west1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div></p>
+<hr />
+<h3 id="issue-secret-manager-values-not-found">Issue: Secret Manager values not found</h3>
+<p><strong>Error:</strong> <code>Error 404: Secret not found</code></p>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># Verify secrets were created</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>gcloud<span class="w"> </span>secrets<span class="w"> </span>list<span class="w"> </span>--project<span class="o">=</span>tomer-env-3
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a><span class="c1"># Verify Cloud Run has access</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>gcloud<span class="w"> </span>secrets<span class="w"> </span>get-iam-policy<span class="w"> </span>tomer-env-3-backend-env<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a><span class="w">  </span>--project<span class="o">=</span>tomer-env-3
+</code></pre></div></p>
+<hr />
+<h3 id="issue-dns-not-resolving">Issue: DNS not resolving</h3>
+<p><strong>Error:</strong> <code>Name or service not known</code> when pinging domain</p>
+<p><strong>Solution:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="c1"># Verify DNS record was created</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>nslookup<span class="w"> </span>tomer-env-3.thecourtyard.ai
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="c1"># If not resolving, check:</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a><span class="c1"># 1. DNS record exists in GoDaddy</span>
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a><span class="c1"># 2. Load balancer IP is correct</span>
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="c1"># 3. Wait 5-10 minutes for DNS propagation</span>
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a><span class="c1"># Force DNS refresh:</span>
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>ipconfig<span class="w"> </span>/flushdns<span class="w">  </span><span class="c1"># Windows</span>
+<a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>sudo<span class="w"> </span>dscacheutil<span class="w"> </span>-flushcache<span class="w">  </span><span class="c1"># macOS</span>
+<a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-resolved<span class="w">  </span><span class="c1"># Linux</span>
+</code></pre></div></p>
+<hr />
+<h2 id="next-steps-after-setup">Next Steps After Setup</h2>
+<ol>
+<li><strong>Deploy applications</strong> - Push code to GitHub, workflows deploy to Cloud Run</li>
+<li><strong>Monitor resources</strong> - Set up Cloud Monitoring/Logging dashboards</li>
+<li><strong>Test end-to-end</strong> - Verify all 3 services communicate</li>
+<li><strong>Set up backups</strong> - Ensure database backups are scheduled</li>
+<li><strong>Configure alerts</strong> - Set up alert policies for errors/high latency</li>
+<li><strong>Document credentials</strong> - Store all secrets in 1Password/vault</li>
+<li><strong>Team access</strong> - Grant IAM roles to team members</li>
+</ol>
+<hr />
+<h2 id="checklist">Checklist</h2>
+<p><strong>Pre-Setup:</strong>
+- [ ] GCP Organization access
+- [ ] Azure AD access (for Microsoft OAuth)
+- [ ] Firebase access
+- [ ] GitHub organization admin access
+- [ ] GoDaddy/DNS provider access
+- [ ] API keys ready (OpenAI, Gemini, HuggingFace)</p>
+<p><strong>Phase 1: GCP Project</strong>
+- [ ] Project created (<code>tomer-env-3</code>)
+- [ ] Project number saved
+- [ ] 15 APIs enabled
+- [ ] Billing account linked</p>
+<p><strong>Phase 2: OAuth</strong>
+- [ ] IAP branding created
+- [ ] IAP OAuth client created (ID + secret saved)
+- [ ] Microsoft app registered (ID + secret saved)
+- [ ] Firebase project created
+- [ ] Firebase key in base64 saved</p>
+<p><strong>Phase 3: Service Accounts</strong>
+- [ ] <code>terraform-sa</code> created with 4 roles
+- [ ] <code>terraform-sa</code> key downloaded and saved
+- [ ] <code>github-deployer</code> created with 5 roles
+- [ ] User IAP permissions granted</p>
+<p><strong>Phase 4: GitHub</strong>
+- [ ] WIF pool created (<code>github-pool</code>)
+- [ ] WIF provider created (<code>github-provider</code>)
+- [ ] <code>github-deployer</code> SA has WIF permissions
+- [ ] WIF details saved (service account email + provider path)</p>
+<p><strong>Phase 5: Terraform</strong>
+- [ ] <code>tomer-env-3.tfvars</code> created with all values
+- [ ] <code>tomer-env-3</code> workspace created
+- [ ] <code>terraform init</code> succeeded
+- [ ] <code>terraform validate</code> passed</p>
+<p><strong>Phase 6: Apply</strong>
+- [ ] <code>terraform plan</code> reviewed
+- [ ] <code>terraform apply</code> succeeded
+- [ ] All resources created (check <code>terraform state list</code>)</p>
+<p><strong>Phase 7: Post-Deployment</strong>
+- [ ] DNS record created and resolving
+- [ ] Load balancer accessible
+- [ ] Artifact Registry repos ready
+- [ ] GitHub Actions secrets configured
+- [ ] GitHub workflows created
+- [ ] Database connectivity verified</p>
+<hr />
+<h2 id="success-criteria">Success Criteria</h2>
+<p>Your environment is ready when:</p>
+<p>✅ <code>curl https://tomer-env-3.thecourtyard.ai/health</code> returns <code>200 OK</code>
+✅ <code>terraform state list</code> shows all resources created
+✅ <code>gcloud sql instances list</code> shows PostgreSQL database
+✅ <code>gcloud run services list</code> shows 3 Cloud Run services (backend, engine, dashboard)
+✅ <code>gcloud container images list</code> shows 3 image repos (backend, engine, dashboard)
+✅ GitHub Actions can deploy to Cloud Run
+✅ Database password works and you can query the database
+✅ All 3 services can communicate via internal load balancer</p>
+<hr />
+<p><strong>Congratulations! You now have a fully isolated <code>tomer-env-3</code> environment!</strong> 🎉</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/courtyard-ai" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:engineering@thecourtyard.ai" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
