@@ -1,31 +1,33 @@
-/* RTL support for SSO Configuration page (Hebrew content) */
-body[data-md-component="container"] .md-content__inner {
-    direction: rtl;
-    text-align: right;
+/* RTL support for Hebrew content */
+.md-content__inner {
+    direction: rtl !important;
+    text-align: right !important;
 }
 
-/* Keep navigation and header LTR */
+/* Keep navigation and header LTR (English) */
 .md-header,
-.md-nav,
+.md-tabs,
+.md-nav--primary,
+.md-nav--secondary,
 .md-sidebar {
-    direction: ltr;
-    text-align: left;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
-/* Keep code blocks and technical content LTR */
-.md-content article pre,
-.md-content article code,
-.md-content article .highlight {
-    direction: ltr;
-    text-align: left;
+/* Code blocks stay LTR for readability */
+.md-content pre,
+.md-content code:not(.language-text),
+.highlight {
+    direction: ltr !important;
+    text-align: left !important;
 }
 
-/* Keep tables readable in RTL context */
-.md-content article table {
-    direction: rtl;
+/* Tables in RTL */
+.md-content table {
+    direction: rtl !important;
 }
 
-.md-content article table th,
-.md-content article table td {
-    text-align: right;
+.md-content table th,
+.md-content table td {
+    text-align: right !important;
 }
