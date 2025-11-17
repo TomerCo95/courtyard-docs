@@ -1,0 +1,9 @@
+/* Keep code blocks and technical content LTR even in RTL pages */
+.md-content pre,
+.md-content code,
+.md-typeset code,
+.highlight,
+.highlighttable {
+    direction: ltr !important;
+    text-align: left !important;
+}
