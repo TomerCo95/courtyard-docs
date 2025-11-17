@@ -29,4 +29,4 @@ jobs:
 
       - name: Deploy to GitHub Pages (public branch)
         run: |
-          mkdocs gh-deploy --config-file mkdocs-public.yml --force --branch gh-pages-public
+          mkdocs gh-deploy --config-file mkdocs-public.yml --force --remote-branch gh-pages-public
