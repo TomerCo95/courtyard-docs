@@ -1,12 +1,12 @@
-# Courtyard AI Documentation
+# Courtyard AI Public Documentation
 
-This repository contains both internal and public-facing documentation for Courtyard AI.
+Public customer-facing documentation for Courtyard AI integration guides.
+
+**Note**: Internal documentation has been moved to a separate private repository: [courtyard-docs-internal](https://github.com/courtyard-ai/courtyard-docs-internal)
 
 ## Structure
 
-- `docs-internal/` - Internal technical documentation (for team members only)
-- `docs-public/` - Public customer-facing documentation
-- `mkdocs-internal.yml` - Configuration for internal docs site
+- `docs-public/` - Public customer-facing documentation (Hebrew with RTL support)
 - `mkdocs-public.yml` - Configuration for public docs site
 
 ## Local Development
@@ -17,15 +17,7 @@ This repository contains both internal and public-facing documentation for Court
 pip install mkdocs-material
 ```
 
-### Preview Internal Docs
-
-```bash
-mkdocs serve -f mkdocs-internal.yml
-```
-
-Visit: http://127.0.0.1:8000
-
-### Preview Public Docs
+### Preview Docs
 
 ```bash
 mkdocs serve -f mkdocs-public.yml
@@ -35,32 +27,17 @@ Visit: http://127.0.0.1:8000
 
 ## Deployment
 
-- **Internal docs** are automatically deployed to GitHub Pages on the `gh-pages-internal` branch
-- **Public docs** are automatically deployed to GitHub Pages on the `gh-pages-public` branch
+Public docs are automatically deployed to GitHub Pages on push to main branch.
+
+**Live Site**: https://courtyard-ai.github.io/courtyard-docs/
 
 ### GitHub Pages Setup
 
-After pushing to GitHub:
+The repository is configured to deploy from the `gh-pages-public` branch automatically via GitHub Actions.
 
-1. Go to repository **Settings** → **Pages**
-2. For internal docs:
-   - Source: Deploy from a branch
-   - Branch: `gh-pages-internal`
-   - Optionally set custom domain: `docs-internal.thecourtyard.ai`
-3. For public docs (you'll need to set this up in a separate GitHub Pages configuration or separate repo):
-   - Source: Deploy from a branch
-   - Branch: `gh-pages-public`
-   - Optionally set custom domain: `docs.thecourtyard.ai`
+Optionally set custom domain: `docs.thecourtyard.ai`
 
 ## Adding New Documentation
-
-### Internal Docs
-
-1. Add markdown files to `docs-internal/`
-2. Update navigation in `mkdocs-internal.yml`
-3. Commit and push - automatically deploys
-
-### Public Docs
 
 1. Add markdown files to `docs-public/`
 2. Update navigation in `mkdocs-public.yml`
@@ -68,4 +45,4 @@ After pushing to GitHub:
 
 ## License
 
-Internal documentation is proprietary. Public documentation is available for customer use.
+Public documentation is available for customer use.
