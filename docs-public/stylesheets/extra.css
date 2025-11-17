@@ -1,0 +1,31 @@
+/* RTL support for SSO Configuration page (Hebrew content) */
+body[data-md-component="container"] .md-content__inner {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Keep navigation and header LTR */
+.md-header,
+.md-nav,
+.md-sidebar {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Keep code blocks and technical content LTR */
+.md-content article pre,
+.md-content article code,
+.md-content article .highlight {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Keep tables readable in RTL context */
+.md-content article table {
+    direction: rtl;
+}
+
+.md-content article table th,
+.md-content article table td {
+    text-align: right;
+}

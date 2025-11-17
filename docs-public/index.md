@@ -4,7 +4,7 @@ Welcome to the Courtyard AI integration documentation.
 
 ## Integration Guides
 
-- [SSO Configuration Guide](MS_AUTH_CONFIGURATION.md) - How to configure Microsoft SSO/SAML for your organization
+- [SSO Configuration Guide (Hebrew)](MS_AUTH_CONFIGURATION.md) - How to configure Microsoft SSO/SAML for your organization
 
 ## Support
 

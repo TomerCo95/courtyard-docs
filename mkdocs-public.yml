@@ -9,8 +9,6 @@ site_dir: site-public
 
 theme:
   name: material
-  language: he
-  direction: rtl
   palette:
     # Light mode
     - scheme: default
@@ -55,6 +53,9 @@ markdown_extensions:
 nav:
   - Home: index.md
   - SSO Configuration: MS_AUTH_CONFIGURATION.md
+
+extra_css:
+  - stylesheets/extra.css
 
 extra:
   social:
